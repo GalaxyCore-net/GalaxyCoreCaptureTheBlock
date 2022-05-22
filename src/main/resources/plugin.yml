@@ -1,0 +1,7 @@
+name: CaptureTheBlock
+version: '${project.version}'
+main: net.galaxycore.capturetheblock.CaptureTheBlock
+api-version: 1.18
+prefix: CTB
+depend: [ GalaxyCoreCore ]
+authors: [ Bloeckchengrafik ]
