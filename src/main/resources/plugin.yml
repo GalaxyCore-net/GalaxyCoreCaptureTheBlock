@@ -5,3 +5,7 @@ api-version: 1.18
 prefix: CTB
 depend: [ GalaxyCoreCore ]
 authors: [ Bloeckchengrafik ]
+
+commands:
+  start:
+    permission: ctb.command.start
