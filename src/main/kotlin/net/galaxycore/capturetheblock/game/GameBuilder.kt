@@ -2,7 +2,6 @@ package net.galaxycore.capturetheblock.game
 
 import net.galaxycore.capturetheblock.PluginInstance
 import net.galaxycore.capturetheblock.utils.hours
-import net.galaxycore.capturetheblock.utils.minutes
 import net.galaxycore.capturetheblock.utils.seconds
 
 fun getNewGame(): GamePhaseSystem {

@@ -1,4 +1,4 @@
-@file:Suppress("MemberVisibilityCanBePrivate")
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
 
 package net.galaxycore.capturetheblock.utils
 
@@ -17,7 +17,7 @@ abstract class ChainedRunnablePart<T, R>(
     abstract fun execute()
 
     /**
-     * Begins execution of this chained runnable, catching any exception of
+     * Begins execution of this chained runnable, catching any exception to
      * type [E] and passing it to the optional [exceptionHandler].
      *
      * @param exceptionSync whether the exception handler should be executed
