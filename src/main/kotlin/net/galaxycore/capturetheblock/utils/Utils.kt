@@ -10,6 +10,7 @@ import net.kyori.adventure.text.TextReplacementConfig
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandExecutor
 import org.bukkit.entity.Player
+import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 
 
@@ -174,4 +175,8 @@ fun broadcast(i18nKey: String, replaceable: HashMap<String, Component>) {
 
 fun JavaPlugin.forCommandToExecutor(cmd: String, executor: CommandExecutor) {
     this.getCommand(cmd)!!.setExecutor(executor)
+}
+
+operator fun <T> Array<T>.minus(other: List<Any>): Any {
+    return this.subtract(other.toSet())
 }
