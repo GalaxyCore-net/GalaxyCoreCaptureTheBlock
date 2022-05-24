@@ -52,7 +52,7 @@ class CaptureTheBlock : JavaPlugin() {
         endPhase = EndPhase()
 
         firstSync {
-            d("Running delayed task")
+            d("Starting Game")
             lobbyPhase.onEnable()
         }.execute()
 

@@ -108,8 +108,8 @@ class ChainedRunnablePartThen<T, R>(
 
 // FIRST
 fun <R> firstDo(sync: Boolean, runnable: () -> R) = ChainedRunnablePartFirst(runnable, sync)
-fun <R> firstSync(runnable: () -> R) = firstDo(true, runnable)
-fun <R> firstAsync(runnable: () -> R) = firstDo(false, runnable)
+fun firstSync(runnable: () -> Any) = firstDo(true, runnable)
+fun firstAsync(runnable: () -> Any) = firstDo(false, runnable)
 
 // THEN
 fun <T, R, U> ChainedRunnablePart<T, R>.thenDo(sync: Boolean, runnable: (R) -> U) =

@@ -8,4 +8,4 @@ authors: [ Bloeckchengrafik ]
 
 commands:
   start:
-    permission: ctb.command.start
+    aliases: [ ctbstart ]
