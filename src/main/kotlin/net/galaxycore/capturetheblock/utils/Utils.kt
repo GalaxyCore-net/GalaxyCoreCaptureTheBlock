@@ -10,9 +10,9 @@ import net.kyori.adventure.text.TextReplacementConfig
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandExecutor
 import org.bukkit.entity.Player
-import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 
+private const val INTERNAL_TRACE_DEPTH = 7
 
 fun getTraceInfo(): String {
     val trace = Thread.currentThread().stackTrace
@@ -20,7 +20,7 @@ fun getTraceInfo(): String {
         return "[${Thread.currentThread().name}/?] "
     }
 
-    val elem = trace[7]
+    val elem = trace[INTERNAL_TRACE_DEPTH]
     val clazz = Class.forName(elem.className)
     val formattedPackageName: StringBuilder = StringBuilder()
 
@@ -28,7 +28,13 @@ fun getTraceInfo(): String {
         formattedPackageName += "${component.substring(0, 1)}."
     }
 
-    return "[${Thread.currentThread().name}/$formattedPackageName${clazz.simpleName}:${elem.lineNumber}] "
+    var className = clazz.simpleName
+
+    if (clazz.simpleName == "") {
+        className = "@Anonymous"
+    }
+
+    return "[${Thread.currentThread().name}/$formattedPackageName$className:${elem.lineNumber}] "
 }
 
 operator fun java.lang.StringBuilder.plusAssign(s: String) {

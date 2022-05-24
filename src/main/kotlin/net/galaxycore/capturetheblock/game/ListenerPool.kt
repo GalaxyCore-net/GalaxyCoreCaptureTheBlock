@@ -11,7 +11,9 @@ class ListenerPool {
     private val activeListeners: MutableSet<Class<out Listener>> = mutableSetOf()
 
     private fun activate(listeners: Array<Class<out Listener>>) {
-        val toCreate = listeners.filter { listener -> this.listeners.any { it.javaClass == listener.javaClass } }
+        val toCreate = listeners.filter { listener -> this.listeners.none { it.javaClass == listener.javaClass } }
+
+        d("Activating ${toCreate.size} listeners")
 
         toCreate.forEach {
             val listener: Listener = try {
