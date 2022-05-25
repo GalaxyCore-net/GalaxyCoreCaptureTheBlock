@@ -11,6 +11,8 @@ import net.galaxycore.capturetheblock.phases.LobbyPhase
 import net.galaxycore.capturetheblock.phases.PreparePhase
 import net.galaxycore.capturetheblock.utils.*
 import net.galaxycore.capturetheblock.utils.KRunnableHolder
+import net.galaxycore.galaxycorecore.apiutils.CoreProvider
+import net.galaxycore.galaxycorecore.configuration.ConfigNamespace
 import org.bukkit.Bukkit
 import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
@@ -29,6 +31,7 @@ class CaptureTheBlock : JavaPlugin() {
     internal lateinit var game: GamePhaseSystem
     internal lateinit var listenerPool: ListenerPool
     internal val kRunnableHolder by kRunnableHolderProperty
+    internal lateinit var config: ConfigNamespace
 
     /**
      * The Plugin Startup Logic. Gets called by the Bukkit API
@@ -38,6 +41,10 @@ class CaptureTheBlock : JavaPlugin() {
         log = logger
 
         d("Launching CaptureTheBlock")
+
+        config = CoreProvider.getCore().databaseConfiguration.getNamespace("capturetheblock")
+        config.setDefault("lobby.spawn", "world@100.0;100.0;100.0;0.0;180.0")
+
         registerI18nDE()
         registerI18nEN()
 

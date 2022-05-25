@@ -2,6 +2,6 @@ package net.galaxycore.capturetheblock.components
 
 import org.bukkit.event.Listener
 
-class NoDestroyLobbyComponent : Listener {
+class NoBlockModificationComponent : Listener {
     // TODO: Implement
 }
