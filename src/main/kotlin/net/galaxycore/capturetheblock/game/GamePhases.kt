@@ -7,12 +7,21 @@ import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import kotlin.math.floor
 
-class GamePhaseSystem(vararg baseGamePhases: BaseGamePhase) {
-    val gamePhases = baseGamePhases.toMutableList()
+class GamePhaseSystem(vararg val baseGamePhases: BaseGamePhase) {
+    var gamePhases = baseGamePhases.toMutableList()
     var isRunning = false
+    var currentPhase: BaseGamePhase? = null
     fun begin() {
         isRunning = true
-        gamePhases.removeAt(0).startIt(gamePhases)
+        currentPhase = gamePhases.removeAt(0)
+        currentPhase!!.startIt(gamePhases)
+    }
+
+    fun cancel() {
+        currentPhase?.stopIt()
+        isRunning = false
+        currentPhase = null
+        gamePhases = baseGamePhases.toMutableList()
     }
 }
 
@@ -55,9 +64,11 @@ class BaseGamePhase(
     val counterMessageActionBarKey: String?,
     val counterMessage: ((secondsLeft: Long) -> String),
 ) {
+    private var runnable: KSpigotRunnable? = null
+
     fun startIt(phaseQueue: MutableList<BaseGamePhase>) {
         start?.invoke()
-        task(period = 20, howOften = (length / 20) + 1, endCallback = {
+        runnable = task(period = 20, howOften = (length / 20) + 1, endCallback = {
             end?.invoke()
 
             if (phaseQueue.isNotEmpty()) phaseQueue.removeAt(0).startIt(phaseQueue)
@@ -91,6 +102,12 @@ class BaseGamePhase(
                 }
             }
         }
+    }
+
+    fun stopIt() {
+        d("Stopping phase...")
+        d("$runnable")
+        runnable?.forceStop()
     }
 }
 

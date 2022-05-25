@@ -2,6 +2,7 @@ package net.galaxycore.capturetheblock.components
 
 import net.galaxycore.capturetheblock.PluginInstance
 import org.bukkit.Bukkit
+import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -27,5 +28,6 @@ class TeleportToSpawnComponent : Listener {
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         event.player.teleport(location)
+        event.player.gameMode = GameMode.ADVENTURE
     }
 }

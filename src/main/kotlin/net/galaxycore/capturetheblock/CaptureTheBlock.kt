@@ -43,7 +43,7 @@ class CaptureTheBlock : JavaPlugin() {
         d("Launching CaptureTheBlock")
 
         config = CoreProvider.getCore().databaseConfiguration.getNamespace("capturetheblock")
-        config.setDefault("lobby.spawn", "world@100.0;100.0;100.0;0.0;180.0")
+        config.setDefault("lobby.spawn", "world@-25.0;66.1;63.0;180.0;0.0")
 
         registerI18nDE()
         registerI18nEN()
