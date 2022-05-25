@@ -40,7 +40,7 @@ class ListenerPool {
         }
     }
 
-    private fun deactivate(listeners: Array<Class<out Listener>>) {
+    fun deactivate(listeners: Array<Class<out Listener>>) {
         val toRemove = this.listeners.stream()
             .filter { listener -> listeners.any { listener.javaClass == it } }.toList()
 
@@ -56,10 +56,6 @@ class ListenerPool {
         val toDeactivate = this.listeners
             .map { it::class.java }
             .filter { listener -> listeners.none { it == listener } }
-
-        d("Activating ${toActivate.size} listeners")
-        d("Deactivating ${toDeactivate.size} listeners")
-        d("Listeners: ${listeners.map { it.simpleName }}")
 
         activate(toActivate.toTypedArray())
         deactivate(toDeactivate.toTypedArray())

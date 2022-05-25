@@ -14,6 +14,7 @@ class PreparePhase : Phase() {
         // Configure the game
         CancelGameIfToLittlePlayersComponent.currentMinPlayers = 2
         CancelGameIfToLittlePlayersComponent.lookOnTeams = true
+        CancelGameIfToLittlePlayersComponent.shouldEnd = true
     }
 
     override fun onDisable() {

@@ -8,6 +8,7 @@ fun registerI18nDE(){
 
     i18n("nopermission", "§c✗§7 Du hast hierfür keine Rechte", true)
 
+    i18n("phase.lobby.actionbar", "§e(%current%/%of%)", false)
     i18n("phase.lobby.counter", "§eDas Spiel startet in %time%", true)
     i18n("phase.lobby.counter.actionbar", "§e%time%", false)
 
@@ -29,6 +30,7 @@ fun registerI18nEN() {
 
     i18n("nopermission", "§c✗§7 You don't have permission to do this", true)
 
+    i18n("phase.lobby.actionbar", "§e(%current%/%of%)", false)
     i18n("phase.lobby.counter", "§eStarting in %time%", true)
     i18n("phase.lobby.counter.actionbar", "§e%time%", false)
 
