@@ -25,7 +25,6 @@ class ListenerPool {
             this.listeners.add(listener)
             this.activeListeners.add(it)
             PluginManagerInst.registerEvents(listener, PluginInstance)
-            d("Activated new Listener ${it.simpleName}")
         }
 
         val toActivate = this.listeners
@@ -36,7 +35,6 @@ class ListenerPool {
 
             this.activeListeners.add(it.javaClass)
             PluginManagerInst.registerEvents(it, PluginInstance)
-            d("Reactivated Listener ${it.javaClass.simpleName}")
         }
     }
 
@@ -47,7 +45,6 @@ class ListenerPool {
         toRemove.forEach {
             HandlerList.unregisterAll(it)
             this.activeListeners.remove(it::class.java)
-            d("Deactivated Listener ${it.javaClass.simpleName}")
         }
     }
 
