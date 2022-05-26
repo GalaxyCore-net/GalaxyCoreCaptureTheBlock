@@ -12,6 +12,8 @@ import net.galaxycore.capturetheblock.phases.LobbyPhase
 import net.galaxycore.capturetheblock.phases.PreparePhase
 import net.galaxycore.capturetheblock.utils.*
 import net.galaxycore.capturetheblock.utils.KRunnableHolder
+import net.galaxycore.capturetheblock.worlds.allWorlds
+import net.galaxycore.capturetheblock.worlds.discoverWorlds
 import net.galaxycore.galaxycorecore.apiutils.CoreProvider
 import net.galaxycore.galaxycorecore.configuration.ConfigNamespace
 import org.bukkit.Bukkit
@@ -52,6 +54,9 @@ class CaptureTheBlock : JavaPlugin() {
         d("Starting Caching System")
         PluginManagerInst.registerEvents(OnlinePlayerCache.instance, this)
 
+        d("Discovering Worlds...")
+        allWorlds = discoverWorlds()
+        d("Found ${allWorlds!!.size} world(s): ${allWorlds!!.joinToString(", ")}")
 
         d("Introducing Game Phases")
         game = getNewGame()

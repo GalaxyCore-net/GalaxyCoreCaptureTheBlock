@@ -8,6 +8,7 @@ import net.galaxycore.capturetheblock.components.*
 import net.galaxycore.capturetheblock.game.Phase
 import net.galaxycore.capturetheblock.game.game
 import net.galaxycore.capturetheblock.utils.gI18N
+import net.galaxycore.capturetheblock.worlds.chooseWorld
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 
@@ -72,6 +73,6 @@ class LobbyPhase : Phase() {
     }
 
     override fun onDisable() {
-
+        chooseWorld()
     }
 }

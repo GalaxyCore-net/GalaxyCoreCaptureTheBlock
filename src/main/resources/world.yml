@@ -1,0 +1,21 @@
+IsCaptureTheBlock: false
+WorldEnvironment: NORMAL
+Generator:
+
+GameConfig:
+  Red:
+    Spawn: [0.0, 0.0, 0.0, 180.0, 0.0]
+    Area:
+      Min: [-100.0, -100.0, -100.0]
+      Max: [100.0, 100.0, 100.0]
+    BlockPosition: [0.0, 0.0, 0.0]
+    ShopPosition: [0.0, 0.0, 0.0]
+    SpawnerPosition: [0.0, 0.0, 0.0]
+  Blue:
+    Spawn: [ 0.0, 0.0, 0.0, 180.0, 0.0 ]
+    Area:
+      Min: [ -100.0, -100.0, -100.0 ]
+      Max: [ 100.0, 100.0, 100.0 ]
+    BlockPosition: [ 0.0, 0.0, 0.0 ]
+    ShopPosition: [ 0.0, 0.0, 0.0 ]
+    SpawnerPosition: [ 0.0, 0.0, 0.0 ]
