@@ -11,6 +11,8 @@ fun registerI18nDE(){
     i18n("phase.lobby.actionbar", "§e(%current%/%of%)", false)
     i18n("phase.lobby.counter", "§eDas Spiel startet in %time%", true)
     i18n("phase.lobby.counter.actionbar", "§e%time%", false)
+    i18n("phase.lobby.mapchooser", "§eWähle eine Map", false)
+    i18n("phase.lobby.teamchooser", "§eWähle eine Team", false)
 
     i18n("phase.prep.counter", "§eDie Schutzzeit endet in %time%", true)
     i18n("phase.prep.counter.actionbar", "§eBereite dich vor! | %time%", false)
@@ -33,6 +35,8 @@ fun registerI18nEN() {
     i18n("phase.lobby.actionbar", "§e(%current%/%of%)", false)
     i18n("phase.lobby.counter", "§eStarting in %time%", true)
     i18n("phase.lobby.counter.actionbar", "§e%time%", false)
+    i18n("phase.lobby.mapchooser", "§eChoose a map", false)
+    i18n("phase.lobby.teamchooser", "§eChoose a team", false)
 
     i18n("phase.prep.counter", "§eThe protection time ends in %time%", true)
     i18n("phase.prep.counter.actionbar", "§ePrepare yourself! | %time%", false)
@@ -45,4 +49,5 @@ fun registerI18nEN() {
 
     i18n("command.start.success", "§e✓§7 Started the game!", true)
     i18n("command.start.failure", "§c✗§7 The game is already started!", true)
+
 }

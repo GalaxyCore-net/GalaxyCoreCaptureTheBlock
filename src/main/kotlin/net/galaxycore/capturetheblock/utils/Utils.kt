@@ -11,6 +11,7 @@ import org.bukkit.Bukkit
 import org.bukkit.command.CommandExecutor
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
+import java.util.*
 
 private const val INTERNAL_TRACE_DEPTH = 7
 
@@ -180,4 +181,18 @@ fun JavaPlugin.forCommandToExecutor(cmd: String, executor: CommandExecutor) {
 
 operator fun <T> Array<T>.minus(other: List<Any>): Any {
     return this.subtract(other.toSet())
+}
+
+fun <E> List<E>.pickRandom(i: Int): List<E>? {
+    if (i > this.size) return null
+    val toChooseFrom = this.toMutableList()
+
+    val list = mutableSetOf<E>()
+    for (j in 0 until i) {
+        toChooseFrom[Random().nextInt(toChooseFrom.size)].let {
+            list.add(it)
+            toChooseFrom.remove(it)
+        }
+    }
+    return list.toList()
 }

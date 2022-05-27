@@ -40,3 +40,4 @@ fun File.asWorld(): World? {
 
 var currentWorld: World? = null
 var allWorlds: List<File>? = null
+var possibleWorlds: List<File>? = null

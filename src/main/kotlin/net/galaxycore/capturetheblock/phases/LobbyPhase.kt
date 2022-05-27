@@ -19,6 +19,7 @@ class LobbyPhase : Phase() {
             NoBlockModificationComponent::class.java,
             NoHealthModificationComponent::class.java,
             StartGameIfEnoughPlayersComponent::class.java,
+            LobbyHotbarComponent::class.java,
         )
 
         // Configure the game to cancel if there are too few players

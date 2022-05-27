@@ -49,13 +49,14 @@ class WorldSpecificConfig(file: File) : YamlConfiguration() {
         val x = loc[0].toDouble()
         val y = loc[1].toDouble()
         val z = loc[2].toDouble()
-        val yaw = loc[3]?.toFloat()
-        val pitch = loc[4]?.toFloat()
 
-        if (yaw != null && pitch != null) {
-            return Location(null, x, y, z, yaw, pitch)
+        if(loc.size == 3) {
+            return Location(null, x, y, z)
         }
 
-        return Location(null, x, y, z)
+        val yaw = loc[3].toFloat()
+        val pitch = loc[4].toFloat()
+
+        return Location(null, x, y, z, yaw, pitch)
     }
 }

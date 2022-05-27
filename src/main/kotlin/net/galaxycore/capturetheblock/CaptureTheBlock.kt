@@ -13,6 +13,7 @@ import net.galaxycore.capturetheblock.phases.PreparePhase
 import net.galaxycore.capturetheblock.utils.*
 import net.galaxycore.capturetheblock.utils.KRunnableHolder
 import net.galaxycore.capturetheblock.worlds.allWorlds
+import net.galaxycore.capturetheblock.worlds.possibleWorlds
 import net.galaxycore.capturetheblock.worlds.discoverWorlds
 import net.galaxycore.galaxycorecore.apiutils.CoreProvider
 import net.galaxycore.galaxycorecore.configuration.ConfigNamespace
@@ -56,6 +57,8 @@ class CaptureTheBlock : JavaPlugin() {
 
         d("Discovering Worlds...")
         allWorlds = discoverWorlds()
+        possibleWorlds = allWorlds!!.pickRandom(3)
+
         d("Found ${allWorlds!!.size} world(s): ${allWorlds!!.joinToString(", ")}")
 
         d("Introducing Game Phases")
