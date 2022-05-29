@@ -23,6 +23,16 @@ class GamePhaseSystem(vararg val baseGamePhases: BaseGamePhase) {
         currentPhase = null
         gamePhases = baseGamePhases.toMutableList()
     }
+
+    fun skip() {
+        currentPhase?.next()
+    }
+
+    fun skip(num: Int) {
+        for (i in 0 until num) {
+            currentPhase?.next()
+        }
+    }
 }
 
 fun buildCounterMessageCallback(
@@ -107,6 +117,10 @@ class BaseGamePhase(
 
     fun stopIt() {
         runnable?.stopWithCallback()
+    }
+
+    fun next() {
+        runnable?.stopWithEndCallback()
     }
 }
 

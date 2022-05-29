@@ -1,6 +1,8 @@
 package net.galaxycore.capturetheblock
 
 import net.galaxycore.capturetheblock.cache.OnlinePlayerCache
+import net.galaxycore.capturetheblock.commands.CTBCommand
+import net.galaxycore.capturetheblock.commands.DebugCommand
 import net.galaxycore.capturetheblock.commands.StartCommand
 import net.galaxycore.capturetheblock.game.GamePhaseSystem
 import net.galaxycore.capturetheblock.game.ListenerPool
@@ -78,6 +80,8 @@ class CaptureTheBlock : JavaPlugin() {
 
         d("Loading Command Map")
         forCommandToExecutor("start", StartCommand())
+        forCommandToExecutor("ctb", CTBCommand())
+        forCommandToExecutor("coredump", DebugCommand(), true)
 
         i("CaptureTheBlock was loaded")
     }

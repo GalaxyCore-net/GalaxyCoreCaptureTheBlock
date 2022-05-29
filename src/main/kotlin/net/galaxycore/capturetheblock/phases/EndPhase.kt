@@ -6,7 +6,7 @@ import net.galaxycore.capturetheblock.game.Phase
 import org.bukkit.Bukkit
 
 class EndPhase : Phase() {
-    override fun onEnable() {
+    override fun enable() {
         listenWith(
             NoHealthModificationComponent::class.java,
             CancelGameIfToLittlePlayersComponent::class.java
@@ -18,7 +18,7 @@ class EndPhase : Phase() {
         CancelGameIfToLittlePlayersComponent.shouldEnd = false
     }
 
-    override fun onDisable() {
+    override fun disable() {
         Bukkit.getServer().shutdown()
     }
 }

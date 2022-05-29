@@ -9,3 +9,7 @@ authors: [ Bloeckchengrafik ]
 commands:
   start:
     aliases: [ ctbstart ]
+  ctb:
+    aliases: [ capturetheblock ]
+  coredump:
+    aliases: [ ctbcoredump, ctbdb, ctbdbg ]

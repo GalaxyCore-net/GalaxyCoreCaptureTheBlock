@@ -57,5 +57,14 @@ class ListenerPool {
         activate(toActivate.toTypedArray())
         deactivate(toDeactivate.toTypedArray())
     }
+
+    fun dump(): String {
+        return """
+            |Active Listeners:
+            |${this.activeListeners.joinToString("\n") { it.simpleName }}
+            |All Listeners:
+            |${this.listeners.joinToString("\n") { it.javaClass.simpleName }}
+        """.trimMargin("|")
+    }
 }
 

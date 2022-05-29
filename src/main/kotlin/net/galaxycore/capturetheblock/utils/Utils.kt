@@ -9,6 +9,7 @@ import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.TextReplacementConfig
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandExecutor
+import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.*
@@ -175,8 +176,9 @@ fun broadcast(i18nKey: String, replaceable: HashMap<String, Component>) {
 
 }
 
-fun JavaPlugin.forCommandToExecutor(cmd: String, executor: CommandExecutor) {
+fun JavaPlugin.forCommandToExecutor(cmd: String, executor: CommandExecutor, isAlsoTabCompleter: Boolean = false) {
     this.getCommand(cmd)!!.setExecutor(executor)
+    if (isAlsoTabCompleter) this.getCommand(cmd)!!.tabCompleter = executor as TabCompleter
 }
 
 operator fun <T> Array<T>.minus(other: List<Any>): Any {

@@ -5,7 +5,7 @@ import net.galaxycore.capturetheblock.components.NoHungerModificationComponent
 import net.galaxycore.capturetheblock.game.Phase
 
 class GamePhase : Phase() {
-    override fun onEnable() {
+    override fun enable() {
         listenWith(
             NoHungerModificationComponent::class.java,
             CancelGameIfToLittlePlayersComponent::class.java
@@ -17,7 +17,7 @@ class GamePhase : Phase() {
         CancelGameIfToLittlePlayersComponent.shouldEnd = true
     }
 
-    override fun onDisable() {
+    override fun disable() {
 
     }
 }

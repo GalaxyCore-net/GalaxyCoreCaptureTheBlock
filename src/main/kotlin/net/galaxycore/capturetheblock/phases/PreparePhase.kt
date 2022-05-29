@@ -8,7 +8,7 @@ import org.bukkit.Bukkit
 import org.bukkit.GameMode
 
 class PreparePhase : Phase() {
-    override fun onEnable() {
+    override fun enable() {
         listenWith(
             NoHealthModificationComponent::class.java,
             CancelGameIfToLittlePlayersComponent::class.java
@@ -26,7 +26,7 @@ class PreparePhase : Phase() {
         CancelGameIfToLittlePlayersComponent.shouldEnd = true
     }
 
-    override fun onDisable() {
+    override fun disable() {
 
     }
 }

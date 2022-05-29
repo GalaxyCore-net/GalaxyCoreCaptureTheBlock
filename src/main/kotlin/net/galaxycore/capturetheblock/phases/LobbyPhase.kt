@@ -13,7 +13,7 @@ import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 
 class LobbyPhase : Phase() {
-    override fun onEnable() {
+    override fun enable() {
         listenWith(
             TeleportToSpawnComponent::class.java,
             NoBlockModificationComponent::class.java,
@@ -73,7 +73,7 @@ class LobbyPhase : Phase() {
         }
     }
 
-    override fun onDisable() {
+    override fun disable() {
         chooseWorld()
     }
 }
