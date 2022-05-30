@@ -16,6 +16,8 @@ class GamePhaseBuilder(val length: Long) {
     private var counterMessage: ((secondsLeft: Long) -> String)? = null
     private var key: String? = null
     private var keyActionBar: String? = null
+    private var id: String? = null
+
     fun start(callback: () -> Unit) {
         start = callback
     }
@@ -36,6 +38,10 @@ class GamePhaseBuilder(val length: Long) {
         this.key = key
     }
 
+    fun identity(id: String?) {
+        this.id = id
+    }
+
     fun counterActionBarMessageKey(key: String?) {
         this.keyActionBar = key
     }
@@ -53,7 +59,7 @@ class GamePhaseBuilder(val length: Long) {
             createCounterMessageCallback()
         }
 
-        return BaseGamePhase(length, start, end, cancel, key, keyActionBar, counterMessage!!)
+        return BaseGamePhase(length, start, end, cancel, key, keyActionBar, counterMessage!!, id)
     }
 }
 

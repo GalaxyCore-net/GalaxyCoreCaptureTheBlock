@@ -2,7 +2,6 @@ package net.galaxycore.capturetheblock.game
 
 import net.galaxycore.capturetheblock.PluginInstance
 import net.galaxycore.capturetheblock.phases.LobbyPhase
-import net.galaxycore.capturetheblock.utils.d
 import net.galaxycore.capturetheblock.utils.hours
 import net.galaxycore.capturetheblock.utils.seconds
 
@@ -18,9 +17,10 @@ fun getNewGame(): GamePhaseSystem {
             }
 
             cancel {
-                d("Cancelled")
                 (PluginInstance.lobbyPhase as LobbyPhase).onCountdownCancel()
             }
+
+            identity("lobby")
 
             end {
                 PluginInstance.lobbyPhase.onDisable()
@@ -36,6 +36,8 @@ fun getNewGame(): GamePhaseSystem {
                 PluginInstance.prepPhase.onEnable()
             }
 
+            identity("prep")
+
             end {
                 PluginInstance.prepPhase.onDisable()
             }
@@ -50,6 +52,8 @@ fun getNewGame(): GamePhaseSystem {
                 PluginInstance.gamePhase.onEnable()
             }
 
+            identity("game")
+
             end {
                 PluginInstance.gamePhase.onDisable()
             }
@@ -63,6 +67,8 @@ fun getNewGame(): GamePhaseSystem {
             start {
                 PluginInstance.endPhase.onEnable()
             }
+
+            identity("end")
 
             end {
                 PluginInstance.endPhase.onDisable()

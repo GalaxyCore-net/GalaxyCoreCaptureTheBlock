@@ -74,6 +74,7 @@ class LobbyPhase : Phase() {
     }
 
     override fun disable() {
-        chooseWorld()
+        if (super.activated)
+            chooseWorld()
     }
 }

@@ -30,7 +30,7 @@ class GamePhaseSystem(vararg val baseGamePhases: BaseGamePhase) {
 
     fun skip(num: Int) {
         for (i in 0 until num) {
-            currentPhase?.next()
+            skip()
         }
     }
 }
@@ -74,6 +74,7 @@ class BaseGamePhase(
     val counterMessageKey: String?,
     val counterMessageActionBarKey: String?,
     val counterMessage: ((secondsLeft: Long) -> String),
+    val identity: String?,
 ) {
     private var runnable: KSpigotRunnable? = null
 
@@ -82,7 +83,11 @@ class BaseGamePhase(
         runnable = task(period = 20, howOften = (length / 20) + 1, endCallback = {
             end?.invoke()
 
-            if (phaseQueue.isNotEmpty()) phaseQueue.removeAt(0).startIt(phaseQueue)
+            if (phaseQueue.isNotEmpty()) {
+                val newGamePhase = phaseQueue.removeAt(0)
+                newGamePhase.startIt(phaseQueue)
+                game.currentPhase = newGamePhase
+            }
         }, cancelCallback = cancel) {
             val currentCounter = it.counterDownToZero
             if (currentCounter?.isCounterValue == true) {
@@ -122,6 +127,8 @@ class BaseGamePhase(
     fun next() {
         runnable?.stopWithEndCallback()
     }
+
+    fun id() = (identity ?: javaClass.simpleName)!!
 }
 
 private val Long.isCounterValue: Boolean

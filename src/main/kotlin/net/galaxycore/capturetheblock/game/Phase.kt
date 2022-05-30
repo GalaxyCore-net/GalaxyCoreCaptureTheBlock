@@ -21,7 +21,7 @@ abstract class Phase {
 
     fun onDisable() {
         disable()
-        wasDeactivated = false
+        wasDeactivated = true
         activated = false
     }
 
