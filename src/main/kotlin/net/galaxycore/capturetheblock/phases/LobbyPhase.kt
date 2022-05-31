@@ -7,6 +7,7 @@ import net.galaxycore.capturetheblock.cache.OnlinePlayerCache
 import net.galaxycore.capturetheblock.components.*
 import net.galaxycore.capturetheblock.game.Phase
 import net.galaxycore.capturetheblock.game.game
+import net.galaxycore.capturetheblock.teams.createTeams
 import net.galaxycore.capturetheblock.utils.gI18N
 import net.galaxycore.capturetheblock.worlds.chooseWorld
 import net.kyori.adventure.text.Component
@@ -32,23 +33,31 @@ class LobbyPhase : Phase() {
     }
 
     fun onCountdownStart() {
-        PluginInstance.listenerPool.activate(mutableListOf(
+        PluginInstance.listenerPool.activate(
+            mutableListOf(
                 CancelGameIfToLittlePlayersComponent::class.java
-            ).toTypedArray())
+            ).toTypedArray()
+        )
 
-        PluginInstance.listenerPool.deactivate(mutableListOf(
-            StartGameIfEnoughPlayersComponent::class.java
-        ).toTypedArray())
+        PluginInstance.listenerPool.deactivate(
+            mutableListOf(
+                StartGameIfEnoughPlayersComponent::class.java
+            ).toTypedArray()
+        )
     }
 
     fun onCountdownCancel() {
-        PluginInstance.listenerPool.deactivate(mutableListOf(
-            CancelGameIfToLittlePlayersComponent::class.java
-        ).toTypedArray())
+        PluginInstance.listenerPool.deactivate(
+            mutableListOf(
+                CancelGameIfToLittlePlayersComponent::class.java
+            ).toTypedArray()
+        )
 
-        PluginInstance.listenerPool.activate(mutableListOf(
-            StartGameIfEnoughPlayersComponent::class.java
-        ).toTypedArray())
+        PluginInstance.listenerPool.activate(
+            mutableListOf(
+                StartGameIfEnoughPlayersComponent::class.java
+            ).toTypedArray()
+        )
 
         startActionBar()
     }
@@ -63,10 +72,14 @@ class LobbyPhase : Phase() {
                 val minPlayers = CancelGameIfToLittlePlayersComponent.currentMinPlayers
 
                 Bukkit.getOnlinePlayers().forEach {
-                    it.sendActionBar("phase.lobby.actionbar".gI18N(it, hashMapOf(
-                        "current" to Component.text(size),
-                        "of" to Component.text(minPlayers)
-                    )))
+                    it.sendActionBar(
+                        "phase.lobby.actionbar".gI18N(
+                            it, hashMapOf(
+                                "current" to Component.text(size),
+                                "of" to Component.text(minPlayers)
+                            )
+                        )
+                    )
                 }
                 yield()
             }
@@ -74,7 +87,7 @@ class LobbyPhase : Phase() {
     }
 
     override fun disable() {
-        if (super.activated)
-            chooseWorld()
+        chooseWorld()
+        createTeams()
     }
 }

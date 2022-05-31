@@ -1,6 +1,9 @@
 package net.galaxycore.capturetheblock.components
 
 import net.galaxycore.capturetheblock.menu.MapChooserMenu
+import net.galaxycore.capturetheblock.menu.TeamChooserMenu
+import net.galaxycore.capturetheblock.teams.teamBlue
+import net.galaxycore.capturetheblock.teams.teamRed
 import net.galaxycore.capturetheblock.worlds.playersChoosingWorld
 import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N
 import net.galaxycore.galaxycorecore.events.ServerTimePassedEvent
@@ -9,6 +12,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.Action
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.*
 import org.bukkit.inventory.ItemStack
@@ -22,7 +26,7 @@ class LobbyHotbarComponent : Listener {
 
         i18NImpl.languages.values.forEach {
             mapChooserItem[it.lang] = makeItem(Material.MAP, i18NImpl.get(it.lang, "capturetheblock.phase.lobby.mapchooser"))
-            teamChooserItem[it.lang] = makeItem(Material.LEATHER_BOOTS, i18NImpl.get(it.lang, "capturetheblock.phase.lobby.teamchooser"))
+            teamChooserItem[it.lang] = makeItem(Material.FEATHER, i18NImpl.get(it.lang, "capturetheblock.phase.lobby.teamchooser"))
         }
     }
 
@@ -61,13 +65,17 @@ class LobbyHotbarComponent : Listener {
 
     @EventHandler
     fun onInteract(event: PlayerInteractEvent) {
+        if (event.action != Action.RIGHT_CLICK_AIR && event.action != Action.RIGHT_CLICK_BLOCK) return
+
         when (event.player.inventory.heldItemSlot) {
             2 -> {
                 MapChooserMenu(player = event.player).open()
             }
-            6 -> { /* TODO */
+            6 -> {
+                TeamChooserMenu(player = event.player).open()
             }
         }
+
     }
 
     @EventHandler
@@ -88,6 +96,9 @@ class LobbyHotbarComponent : Listener {
     @EventHandler
     fun onPlayerQuit(event: PlayerQuitEvent) {
         playersChoosingWorld.forEach { it.remove(event.player) }
+
+        teamRed.votedPlayers.remove(event.player)
+        teamBlue.votedPlayers.remove(event.player)
     }
 
 }

@@ -7,6 +7,8 @@ fun registerI18nDE(){
     fun i18n(key: String, value: String, prefix: Boolean) { i18nDE(key, value, prefix) }
 
     i18n("nopermission", "§c✗§7 Du hast hierfür keine Rechte", true)
+    i18n("red", "§cRot", false)
+    i18n("blue", "§9Blau", false)
 
     i18n("phase.lobby.actionbar", "§e(%current%/%of%)", false)
     i18n("phase.lobby.counter", "§eDas Spiel startet in %time%", true)
@@ -31,6 +33,8 @@ fun registerI18nEN() {
     fun i18n(key: String, value: String, prefix: Boolean) { i18nEN(key, value, prefix) }
 
     i18n("nopermission", "§c✗§7 You don't have permission to do this", true)
+    i18n("red", "§cRed", false)
+    i18n("blue", "§9Blue", false)
 
     i18n("phase.lobby.actionbar", "§e(%current%/%of%)", false)
     i18n("phase.lobby.counter", "§eStarting in %time%", true)

@@ -41,9 +41,7 @@ class MapChooserMenu(val player: Player) : KMenu() {
 
         player.playSound(Sound.sound(org.bukkit.Sound.BLOCK_NOTE_BLOCK_PLING.key(), Sound.Source.MASTER, 1f, 1f), Sound.Emitter.self())
 
-        world0.itemStack.update (updateItem(0))
-        world1.itemStack.update (updateItem(1))
-        world2.itemStack.update (updateItem(2))
+        player.closeInventory()
     }
 
     private fun updateItem(world: Int): (ItemStack) -> ItemStack = { stack ->

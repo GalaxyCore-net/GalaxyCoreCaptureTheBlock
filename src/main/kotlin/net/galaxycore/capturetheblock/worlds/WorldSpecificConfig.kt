@@ -7,6 +7,16 @@ import org.bukkit.World
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 
+
+data class WorldSpecificContext(
+    val teamSpawn: Location,
+    val teamAreaMin: List<Double>,
+    val teamAreaMax: List<Double>,
+    val teamBlockPos: Location,
+    val teamShopPos: Location,
+    val teamSpawnerPos: Location
+)
+
 class WorldSpecificConfig(file: File) : YamlConfiguration() {
     val isEnabled: Boolean
     val environment: World.Environment
@@ -58,5 +68,30 @@ class WorldSpecificConfig(file: File) : YamlConfiguration() {
         val pitch = loc[4].toFloat()
 
         return Location(null, x, y, z, yaw, pitch)
+    }
+
+    fun getCtx(id: Int): WorldSpecificContext {
+        return when(id) {
+            0 -> {
+                WorldSpecificContext(
+                    teamRedSpawn,
+                    teamRedAreaMin,
+                    teamRedAreaMax,
+                    teamRedBlockPos,
+                    teamRedShopPos,
+                    teamRedSpawnerPos
+                )
+            }
+            else -> {
+                WorldSpecificContext(
+                    teamBlueSpawn,
+                    teamBlueAreaMin,
+                    teamBlueAreaMax,
+                    teamBlueBlockPos,
+                    teamBlueShopPos,
+                    teamBlueSpawnerPos
+                )
+            }
+        }
     }
 }
