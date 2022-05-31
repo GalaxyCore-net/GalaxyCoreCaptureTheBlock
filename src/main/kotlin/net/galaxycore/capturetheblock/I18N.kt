@@ -16,8 +16,9 @@ fun registerI18nDE(){
     i18n("phase.lobby.mapchooser", "§eWähle eine Map", false)
     i18n("phase.lobby.teamchooser", "§eWähle eine Team", false)
 
-    i18n("phase.prep.counter", "§eDie Schutzzeit endet in %time%", true)
+    i18n("phase.prep.counter", "§eEs geht in %time% los", true)
     i18n("phase.prep.counter.actionbar", "§eBereite dich vor! | %time%", false)
+    i18n("phase.prep.restriction", "§cDu kannst dich noch nicht außerhalb deines Teambereichs begeben!", true)
 
     i18n("phase.game.counter", "§eDas Spiel endet in %time%", true)
     i18n("phase.game.counter.actionbar", "§e%time%", false)
@@ -43,7 +44,8 @@ fun registerI18nEN() {
     i18n("phase.lobby.teamchooser", "§eChoose a team", false)
 
     i18n("phase.prep.counter", "§eThe protection time ends in %time%", true)
-    i18n("phase.prep.counter.actionbar", "§ePrepare yourself! | %time%", false)
+    i18n("phase.prep.counter.actionbar", "§eGame starts in %time%", false)
+    i18n("phase.prep.restriction", "§cYou currently can't move outside your team area!", true)
 
     i18n("phase.game.counter", "§eThe game ends in %time%", true)
     i18n("phase.game.counter.actionbar", "§e%time%", false)

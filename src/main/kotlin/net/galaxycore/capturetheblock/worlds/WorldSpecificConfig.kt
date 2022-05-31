@@ -17,7 +17,7 @@ data class WorldSpecificContext(
     val teamSpawnerPos: Location
 )
 
-class WorldSpecificConfig(file: File) : YamlConfiguration() {
+class WorldSpecificConfig(file: File, val insertWorld: Boolean = false) : YamlConfiguration() {
     val isEnabled: Boolean
     val environment: World.Environment
     val generator: String?
@@ -61,13 +61,13 @@ class WorldSpecificConfig(file: File) : YamlConfiguration() {
         val z = loc[2].toDouble()
 
         if(loc.size == 3) {
-            return Location(null, x, y, z)
+            return Location(if(insertWorld) currentWorld!! else null, x, y, z)
         }
 
         val yaw = loc[3].toFloat()
         val pitch = loc[4].toFloat()
 
-        return Location(null, x, y, z, yaw, pitch)
+        return Location(if(insertWorld) currentWorld!! else null, x, y, z, yaw, pitch)
     }
 
     fun getCtx(id: Int): WorldSpecificContext {

@@ -75,6 +75,7 @@ class BaseGamePhase(
     val counterMessageActionBarKey: String?,
     val counterMessage: ((secondsLeft: Long) -> String),
     val identity: String?,
+    val secondFunc: ((string: String) -> Unit)?,
 ) {
     private var runnable: KSpigotRunnable? = null
 
@@ -90,7 +91,9 @@ class BaseGamePhase(
             }
         }, cancelCallback = cancel) {
             val currentCounter = it.counterDownToZero
+
             if (currentCounter?.isCounterValue == true) {
+                secondFunc?.invoke(counterMessage.invoke(currentCounter))
                 if (counterMessageKey != null) {
                     if (counterMessageKey != "") {
                         broadcast(

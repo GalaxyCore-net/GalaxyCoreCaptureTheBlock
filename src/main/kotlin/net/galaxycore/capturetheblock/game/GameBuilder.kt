@@ -27,7 +27,7 @@ fun getNewGame(): GamePhaseSystem {
             }
         }
 
-        phase(30L.seconds) {
+        phase(5L.seconds) {
             /* Game Preparation Time */
             counterMessageKey("phase.prep.counter")
             counterActionBarMessageKey("phase.prep.counter.actionbar")
@@ -37,6 +37,10 @@ fun getNewGame(): GamePhaseSystem {
             }
 
             identity("prep")
+
+            second { string ->
+                PluginInstance.prepPhase.onTick(string)
+            }
 
             end {
                 PluginInstance.prepPhase.onDisable()

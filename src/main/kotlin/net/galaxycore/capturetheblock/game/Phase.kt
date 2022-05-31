@@ -27,4 +27,5 @@ abstract class Phase {
 
     abstract fun enable()
     abstract fun disable()
+    open fun onTick(string: String) {}
 }
