@@ -24,6 +24,7 @@ class PreparePhase : Phase() {
 
         for (player in Bukkit.getOnlinePlayers()) {
             player.team?.init(player)
+            PlayerRestrictionComponent.PLAYER_RESTRICTIONS.add(player)
         }
 
         // Configure the game
