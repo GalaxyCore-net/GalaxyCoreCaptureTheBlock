@@ -9,7 +9,7 @@ abstract class Phase {
     var wasLoaded = false
     var wasDeactivated = false
 
-    fun listenWith(vararg listeners: Class<out Listener>) {
+    fun components(vararg listeners: Class<out Listener>) {
         PluginInstance.listenerPool.push(listeners)
     }
 

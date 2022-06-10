@@ -3,9 +3,7 @@ package net.galaxycore.capturetheblock.phases
 import com.okkero.skedule.SynchronizationContext
 import com.okkero.skedule.schedule
 import net.galaxycore.capturetheblock.PluginInstance
-import net.galaxycore.capturetheblock.components.CancelGameIfToLittlePlayersComponent
-import net.galaxycore.capturetheblock.components.NoHealthModificationComponent
-import net.galaxycore.capturetheblock.components.PlayerRestrictionComponent
+import net.galaxycore.capturetheblock.components.*
 import net.galaxycore.capturetheblock.game.Phase
 import net.galaxycore.capturetheblock.teams.team
 import net.galaxycore.capturetheblock.teams.teamBlue
@@ -16,14 +14,18 @@ import org.bukkit.Bukkit
 
 class PreparePhase : Phase() {
     override fun enable() {
-        listenWith(
-            NoHealthModificationComponent::class.java,
-            CancelGameIfToLittlePlayersComponent::class.java,
-            PlayerRestrictionComponent::class.java
-        )
-
         teamRed.loadConfig()
         teamBlue.loadConfig()
+
+
+        components(
+            NoHealthModificationComponent::class.java,
+            CancelGameIfToLittlePlayersComponent::class.java,
+            PlayerRestrictionComponent::class.java,
+            BlockComponent::class.java,
+            OnlyPlayerSetBlockModComponent::class.java
+        )
+
 
         Bukkit.getScheduler().schedule(PluginInstance, SynchronizationContext.SYNC) {
             waitFor(10)

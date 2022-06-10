@@ -1,14 +1,15 @@
 package net.galaxycore.capturetheblock.components
 
 import net.galaxycore.capturetheblock.PluginInstance
+import net.galaxycore.capturetheblock.cache.OnlinePlayerCache
+import net.galaxycore.capturetheblock.game.GameComponent
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 
-class TeleportToSpawnComponent : Listener {
+class TeleportToSpawnComponent : GameComponent {
     private val location: Location
 
     init {
@@ -29,5 +30,12 @@ class TeleportToSpawnComponent : Listener {
     fun onJoin(event: PlayerJoinEvent) {
         event.player.teleport(location)
         event.player.gameMode = GameMode.ADVENTURE
+    }
+
+    override fun enableComponent() {
+        OnlinePlayerCache.instance.onlinePlayers.forEach { it.teleport(location) }
+    }
+
+    override fun disableComponent() {
     }
 }

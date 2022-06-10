@@ -9,6 +9,7 @@ import org.bukkit.event.Listener
 class ListenerPool {
     private val listeners: MutableSet<Listener> = mutableSetOf()
     private val activeListeners: MutableSet<Class<out Listener>> = mutableSetOf()
+    private val activeComponents: MutableSet<Class<out GameComponent>> = mutableSetOf()
 
     fun activate(listeners: Array<Class<out Listener>>) {
         val toCreate = listeners.filter { listener -> this.listeners.none { it.javaClass == listener.javaClass } }
@@ -24,6 +25,12 @@ class ListenerPool {
 
             this.listeners.add(listener)
             this.activeListeners.add(it)
+
+            if (listener is GameComponent) {
+                listener.enableComponent()
+                this.activeComponents.add(listener.javaClass)
+            }
+
             PluginManagerInst.registerEvents(listener, PluginInstance)
         }
 
@@ -32,6 +39,10 @@ class ListenerPool {
             .filter { listener -> listeners.any { it.javaClass == listener.javaClass } }
 
         toActivate.forEach {
+            if (it is GameComponent) {
+                it.enableComponent()
+                this.activeComponents.add(it.javaClass)
+            }
 
             this.activeListeners.add(it.javaClass)
             PluginManagerInst.registerEvents(it, PluginInstance)
@@ -42,9 +53,14 @@ class ListenerPool {
         val toRemove = this.listeners.stream()
             .filter { listener -> listeners.any { listener.javaClass == it } }.toList()
 
-        toRemove.forEach {
-            HandlerList.unregisterAll(it)
-            this.activeListeners.remove(it::class.java)
+        toRemove.forEach { listener ->
+            HandlerList.unregisterAll(listener)
+            this.activeListeners.remove(listener::class.java)
+
+            if (listener is GameComponent) {
+                listener.disableComponent()
+                this.activeComponents.remove(listener::class.java)
+            }
         }
     }
 

@@ -2,12 +2,13 @@ package net.galaxycore.capturetheblock.teams
 
 import net.galaxycore.capturetheblock.worlds.*
 import org.bukkit.GameMode
+import org.bukkit.Material
 import org.bukkit.entity.Player
 
-class Team(private val id: Int) {
+class Team(private val id: Int, val wool: Material) {
     val votedPlayers = mutableListOf<Player>()
     val players = mutableListOf<Player>()
-    private lateinit var ctx: WorldSpecificContext
+    lateinit var ctx: WorldSpecificContext
 
     fun loadConfig() {
         ctx = WorldSpecificConfig(currentWorld!!.worldFolder.getWorldConfigFile(), true).getCtx(id)
@@ -22,8 +23,8 @@ class Team(private val id: Int) {
 }
 
 
-val teamRed = Team(0)
-val teamBlue = Team(1)
+val teamRed = Team(0, Material.RED_WOOL)
+val teamBlue = Team(1, Material.BLUE_WOOL)
 
 val Player.team: Team?
     get() {

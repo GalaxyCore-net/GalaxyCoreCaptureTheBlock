@@ -2,14 +2,16 @@ package net.galaxycore.capturetheblock.phases
 
 import net.galaxycore.capturetheblock.components.CancelGameIfToLittlePlayersComponent
 import net.galaxycore.capturetheblock.components.NoHealthModificationComponent
+import net.galaxycore.capturetheblock.components.TeleportToSpawnComponent
 import net.galaxycore.capturetheblock.game.Phase
 import org.bukkit.Bukkit
 
 class EndPhase : Phase() {
     override fun enable() {
-        listenWith(
+        components(
             NoHealthModificationComponent::class.java,
-            CancelGameIfToLittlePlayersComponent::class.java
+            CancelGameIfToLittlePlayersComponent::class.java,
+            TeleportToSpawnComponent::class.java
         )
 
         // Configure the game

@@ -15,7 +15,7 @@ import org.bukkit.Bukkit
 
 class LobbyPhase : Phase() {
     override fun enable() {
-        listenWith(
+        components(
             TeleportToSpawnComponent::class.java,
             NoBlockModificationComponent::class.java,
             NoHealthModificationComponent::class.java,
