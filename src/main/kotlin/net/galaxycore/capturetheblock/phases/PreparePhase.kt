@@ -1,5 +1,8 @@
 package net.galaxycore.capturetheblock.phases
 
+import com.okkero.skedule.SynchronizationContext
+import com.okkero.skedule.schedule
+import net.galaxycore.capturetheblock.PluginInstance
 import net.galaxycore.capturetheblock.components.CancelGameIfToLittlePlayersComponent
 import net.galaxycore.capturetheblock.components.NoHealthModificationComponent
 import net.galaxycore.capturetheblock.components.PlayerRestrictionComponent
@@ -22,9 +25,12 @@ class PreparePhase : Phase() {
         teamRed.loadConfig()
         teamBlue.loadConfig()
 
-        for (player in Bukkit.getOnlinePlayers()) {
-            player.team?.init(player)
-            PlayerRestrictionComponent.PLAYER_RESTRICTIONS.add(player)
+        Bukkit.getScheduler().schedule(PluginInstance, SynchronizationContext.SYNC) {
+            waitFor(10)
+            for (player in Bukkit.getOnlinePlayers()) {
+                player.team?.init(player)
+                PlayerRestrictionComponent.PLAYER_RESTRICTIONS.add(player)
+            }
         }
 
         // Configure the game

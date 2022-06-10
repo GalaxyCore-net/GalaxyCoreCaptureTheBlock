@@ -31,9 +31,9 @@ import java.util.logging.Logger
 class CaptureTheBlock : JavaPlugin() {
     private val kRunnableHolderProperty = lazy { KRunnableHolder }
     internal lateinit var lobbyPhase: Phase
-    internal  lateinit var prepPhase: Phase
-    internal  lateinit var gamePhase: Phase
-    internal  lateinit var endPhase: Phase
+    internal lateinit var prepPhase: Phase
+    internal lateinit var gamePhase: Phase
+    internal lateinit var endPhase: Phase
     internal lateinit var game: GamePhaseSystem
     internal lateinit var listenerPool: ListenerPool
     internal val kRunnableHolder by kRunnableHolderProperty
@@ -53,6 +53,7 @@ class CaptureTheBlock : JavaPlugin() {
 
         registerI18nDE()
         registerI18nEN()
+
 
         d("Starting Caching System")
         PluginManagerInst.registerEvents(OnlinePlayerCache.instance, this)
