@@ -2,6 +2,7 @@ package net.galaxycore.capturetheblock.components
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
 
 class OnlyPlayerSetBlockModComponent : Listener {
@@ -13,7 +14,7 @@ class OnlyPlayerSetBlockModComponent : Listener {
     }
 
     @EventHandler
-    fun onBreakBlock(event: BlockPlaceEvent) {
+    fun onBreakBlock(event: BlockBreakEvent) {
         event.isCancelled = true
         val blockKey = event.block.location.hashCode()
         if (blocksByPlayers.contains(blockKey)) {

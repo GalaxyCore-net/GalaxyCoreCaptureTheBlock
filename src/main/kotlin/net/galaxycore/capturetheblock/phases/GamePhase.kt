@@ -13,7 +13,6 @@ class GamePhase : Phase() {
             CancelGameIfToLittlePlayersComponent::class.java,
             BlockComponent::class.java,
             OnlyPlayerSetBlockModComponent::class.java
-
         )
 
         // Configure the game

@@ -5,7 +5,8 @@ import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.entity.Player
 
-class Team(private val id: Int, val wool: Material) {
+class Team(private val id: Int, val wool: Material, val color: String) {
+    val opponent: Team get() = if (this == teamRed) teamBlue else teamRed
     val votedPlayers = mutableListOf<Player>()
     val players = mutableListOf<Player>()
     lateinit var ctx: WorldSpecificContext
@@ -23,8 +24,8 @@ class Team(private val id: Int, val wool: Material) {
 }
 
 
-val teamRed = Team(0, Material.RED_WOOL)
-val teamBlue = Team(1, Material.BLUE_WOOL)
+val teamRed = Team(0, Material.RED_WOOL, "red")
+val teamBlue = Team(1, Material.BLUE_WOOL, "blue")
 
 val Player.team: Team?
     get() {

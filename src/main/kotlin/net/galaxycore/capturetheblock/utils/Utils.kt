@@ -198,3 +198,12 @@ fun <E> List<E>.pickRandom(i: Int): List<E>? {
     }
     return list.toList()
 }
+
+
+fun Player.sendI18N(key: String) {
+    this.sendI18N(key, HashMap())
+}
+
+fun Player.sendI18N(key: String, replaceable: HashMap<String, String>) {
+    key.sI18N(this, replaceable)
+}

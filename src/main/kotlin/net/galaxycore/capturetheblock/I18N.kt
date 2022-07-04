@@ -7,7 +7,7 @@ fun registerI18nDE(){
     fun i18n(key: String, value: String, prefix: Boolean) { i18nDE(key, value, prefix) }
 
     i18n("nopermission", "§c✗§7 Du hast hierfür keine Rechte", true)
-    i18n("red", "§cRot", false)
+    i18n("red", "§4Rot", false)
     i18n("blue", "§9Blau", false)
 
     i18n("phase.lobby.actionbar", "§e(%current%/%of%)", false)
@@ -22,6 +22,13 @@ fun registerI18nDE(){
 
     i18n("phase.game.counter", "§eDas Spiel endet in %time%", true)
     i18n("phase.game.counter.actionbar", "§e%time%", false)
+    i18n("phase.game.youbrokeblock", "§aDu hast den Block deines gegnerischen Teams zerstört! Bringe ihn nach Hause!", true)
+    i18n("phase.game.playerbrokeblock.ownteam", "§a%player% hat den %color%§a Block zerstört!", true)
+    i18n("phase.game.playerbrokeblock.otherteam", "§c%player% hat den %color%§c Block zerstört! Verhindert, dass dieser Spieler in die gegnerische Basis kommt!", true)
+    i18n("phase.game.playerbrokeblock.red", "§4roten", false)
+    i18n("phase.game.playerbrokeblock.blue", "§9blauen", false)
+    i18n("phase.game.cantbreakownblock", "§cDu kannst den eigenen Block nicht zerstören!", true)
+    i18n("phase.game.cantbuildsavezone", "§cDu kannst die Sicherheitszonen nicht bebauen!", true)
 
     i18n("phase.end.counter", "§eDer Server schließt in %time%", true)
     i18n("phase.end.counter.actionbar", "§eDer Server schließt in %time%", false)
@@ -49,6 +56,13 @@ fun registerI18nEN() {
 
     i18n("phase.game.counter", "§eThe game ends in %time%", true)
     i18n("phase.game.counter.actionbar", "§e%time%", false)
+    i18n("phase.game.youbrokeblock", "§aYou broke the block of your opponent's team! Bring it back home!", true)
+    i18n("phase.game.playerbrokeblock.ownteam", "§a%player% broke the %color% §ablock!", true)
+    i18n("phase.game.playerbrokeblock.otherteam", "§c%player% broke the %color% §cblock! Prevent this player from getting into their base!", true)
+    i18n("phase.game.playerbrokeblock.red", "§4red", false)
+    i18n("phase.game.playerbrokeblock.blue", "§9blue", false)
+    i18n("phase.game.cantbreakownblock", "§cYou can't break your own block!", true)
+    i18n("phase.game.cantbuildsavezone", "§cYou can't build in save zones!", true)
 
     i18n("phase.end.counter", "§eThe server closes in %time%", true)
     i18n("phase.end.counter.actionbar", "§eThe server closes in %time%", false)
