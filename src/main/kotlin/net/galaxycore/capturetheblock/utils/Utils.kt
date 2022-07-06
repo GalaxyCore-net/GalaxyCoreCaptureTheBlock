@@ -3,6 +3,9 @@
 package net.galaxycore.capturetheblock.utils
 
 import net.galaxycore.capturetheblock.CaptureTheBlock
+import net.galaxycore.capturetheblock.teams.Team
+import net.galaxycore.capturetheblock.teams.teamBlue
+import net.galaxycore.capturetheblock.teams.teamRed
 import net.galaxycore.galaxycorecore.configuration.internationalisation.I18N
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
@@ -206,4 +209,9 @@ fun Player.sendI18N(key: String) {
 
 fun Player.sendI18N(key: String, replaceable: HashMap<String, String>) {
     key.sI18N(this, replaceable)
+}
+
+fun forBothTeams(function: (Team) -> Unit) {
+    function.invoke(teamRed)
+    function.invoke(teamBlue)
 }

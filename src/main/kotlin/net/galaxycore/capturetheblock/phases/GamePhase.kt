@@ -1,9 +1,6 @@
 package net.galaxycore.capturetheblock.phases
 
-import net.galaxycore.capturetheblock.components.BlockComponent
-import net.galaxycore.capturetheblock.components.CancelGameIfToLittlePlayersComponent
-import net.galaxycore.capturetheblock.components.NoHungerModificationComponent
-import net.galaxycore.capturetheblock.components.OnlyPlayerSetBlockModComponent
+import net.galaxycore.capturetheblock.components.*
 import net.galaxycore.capturetheblock.game.Phase
 
 class GamePhase : Phase() {
@@ -12,7 +9,8 @@ class GamePhase : Phase() {
             NoHungerModificationComponent::class.java,
             CancelGameIfToLittlePlayersComponent::class.java,
             BlockComponent::class.java,
-            OnlyPlayerSetBlockModComponent::class.java
+            OnlyPlayerSetBlockModComponent::class.java,
+            SpawnerComponent::class.java
         )
 
         // Configure the game

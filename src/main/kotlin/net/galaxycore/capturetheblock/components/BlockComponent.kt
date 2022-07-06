@@ -5,6 +5,7 @@ import net.galaxycore.capturetheblock.teams.Team
 import net.galaxycore.capturetheblock.teams.team
 import net.galaxycore.capturetheblock.teams.teamBlue
 import net.galaxycore.capturetheblock.teams.teamRed
+import net.galaxycore.capturetheblock.utils.forBothTeams
 import net.galaxycore.capturetheblock.utils.gI18N
 import net.galaxycore.capturetheblock.utils.sI18N
 import net.galaxycore.capturetheblock.utils.sendI18N
@@ -23,10 +24,6 @@ class BlockComponent : GameComponent {
         forBothTeams { it.ctx.teamBlockPos.block.type = it.wool  }
     }
 
-    private fun forBothTeams(function: (Team) -> Unit) {
-        function.invoke(teamRed)
-        function.invoke(teamBlue)
-    }
 
     @EventHandler
     fun onBlockPlace(event: BlockPlaceEvent) {
